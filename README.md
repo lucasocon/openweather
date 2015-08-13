@@ -1,20 +1,21 @@
 # Openweather
 
 This gem is an abstraction to the OpenWeatherMap API.
+
 This gem provide the weather from numerous regions around the world.
 
 Also you can get some data on the gem response:
-  City name
-  Longitude
-  Latitude
-  Temperature
-  Pressure
-  Humidity
-  Min temperature
-  Max temperature
-  Clouds
-  Wind speed
-  Wind angle
+1.City name
+2.Longitude
+3.Latitude
+4.Temperature
+5.Pressure
+6.Humidity
+7.Min temperature
+8.Max temperature
+9.Clouds
+10.Wind speed
+11.Wind angle
 
 You can get your APP ID from the OpenWeatherMap website.
 http://openweathermap.org/appid#get
