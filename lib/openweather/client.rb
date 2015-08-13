@@ -38,7 +38,9 @@ module Openweather
 
     case res
     when Net::HTTPSuccess
-      JSON.parse(res.body)
+      json = JSON.parse(res.body)
+      Openweather::Weather.new(json)
+
     when Net::HTTPUnprocessableEntity
       raise UnprocessableError, "Bad URI param!"
     else
