@@ -1,4 +1,4 @@
-# Openweather
+# Openweather2
 
 This gem is an abstraction to the OpenWeatherMap API.
 
@@ -26,7 +26,7 @@ http://openweathermap.org/appid#get
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'openweather'
+gem 'openweather2'
 ```
 
 And then execute:
@@ -35,21 +35,21 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install openweather
+    $ gem install openweather2
 
 ## Usage
 
 Usage:
 
 ```ruby
-require "openweather"
+require "openweather2"
 
-Openweather.configure do |config|
+Openweather2.configure do |config|
   config.endpoint = 'http://api.openweathermap.org/data/2.5/weather'
   config.apikey = YOUR APP ID
 end
 
-Openweather.weather('london')
+Openweather2.weather('london')
 
 ```
 

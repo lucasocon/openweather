@@ -2,7 +2,7 @@ require "uri"
 require "net/http"
 require "json"
 
-module Openweather
+module Openweather2
 
   class << self
     attr_accessor :configuration
@@ -27,7 +27,7 @@ module Openweather
   def weather(city)
     configure_required!
 
-    uri = URI(Openweather.configuration.endpoint)
+    uri = URI(Openweather2.configuration.endpoint)
     uri.query = URI.encode_www_form(default_params.merge(:q => city))
     req = Net::HTTP::Get.new(uri.request_uri)
 
@@ -39,7 +39,7 @@ module Openweather
     case res
     when Net::HTTPSuccess
       json = JSON.parse(res.body)
-      Openweather::Weather.new(json)
+      Openweather2::Weather.new(json)
 
     when Net::HTTPUnprocessableEntity
       raise UnprocessableError, "Bad URI param!"
@@ -51,19 +51,19 @@ module Openweather
   private
 
   def configure_required!
-    if Openweather.configuration.instance_variables.size < 2
-      raise ArgumentError, "You must configure Openweather"
+    if Openweather2.configuration.instance_variables.size < 2
+      raise ArgumentError, "You must configure Openweather2"
     end
   end
   
   def default_params
-    {:APPID => Openweather.configuration.apikey }
+    {:APPID => Openweather2.configuration.apikey }
   end
   
   def do_request(req)
     configure_required!
 
-    endpoint_uri = URI(Openweather.configuration.endpoint)
+    endpoint_uri = URI(Openweather2.configuration.endpoint)
     
     
     http_params = [

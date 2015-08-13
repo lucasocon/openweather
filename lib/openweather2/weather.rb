@@ -1,4 +1,4 @@
-module Openweather
+module Openweather2
   class Weather
 
     attr_reader :city, :longitude, :latitude, :pressure, :humidity, :clouds,

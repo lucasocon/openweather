@@ -1,4 +1,4 @@
-require './lib/openweather'
+require './lib/openweather2'
 require 'minitest/autorun'
 require 'webmock/minitest'
 require 'vcr'
