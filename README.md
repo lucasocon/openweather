@@ -5,19 +5,20 @@ This gem is an abstraction to the OpenWeatherMap API.
 This gem provide the weather from numerous regions around the world.
 
 Also you can get some data on the gem response:
-1.City name
-2.Longitude
-3.Latitude
-4.Temperature
-5.Pressure
-6.Humidity
-7.Min temperature
-8.Max temperature
-9.Clouds
-10.Wind speed
-11.Wind angle
+* City name
+* Longitude
+* Latitude
+* Temperature
+* Pressure
+* Humidity
+* Min temperature
+* Max temperature
+* Clouds
+* Wind speed
+* Wind angle
 
 You can get your APP ID from the OpenWeatherMap website.
+
 http://openweathermap.org/appid#get
 
 ## Installation
@@ -60,12 +61,12 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Be free to report and send your pull request
+Be free to report and send your pull request.
+
 Bug reports and pull requests are welcome on GitHub at https://github.com/lucasocon/openweather.
 
 Contributors:
-
-Lucas Ocon (lucasocon)
+* Lucas Ocon (lucasocon)
 
 ## License
 
