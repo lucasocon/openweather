@@ -8,11 +8,11 @@ module Openweather2
       @city = json['name']
       @longitude = json['coord']['lon']
       @latitude = json['coord']['lat']
-      @temperature = json['main']['temp']
+      @temperature = Openweather2::Temperature.new(json['main']['temp'])
       @pressure = json['main']['pressure']
       @humidity = json['main']['humidity']
-      @min_temperature = json['main']['temp_min']
-      @max_temperature = json['main']['temp_max']
+      @min_temperature = Openweather2::Temperature.new(json['main']['temp_min'])
+      @max_temperature = Openweather2::Temperature.new(json['main']['temp_max'])
       @clouds = json['clouds']['all']
       @wind_speed = json['wind']['speed']
       @wind_angle = json['wind']['deg']
