@@ -59,31 +59,5 @@ module Openweather2
   def default_params
     {:APPID => Openweather2.configuration.apikey }
   end
-  
-  def do_request(req)
-    configure_required!
-
-    endpoint_uri = URI(Openweather2.configuration.endpoint)
-    
-    
-    http_params = [
-      endpoint_uri.hostname, 
-      endpoint_uri.port, 
-      use_ssl: uri.scheme == 'https'
-    ]
-    
-    res = Net::HTTP.start(*http_params) do |http|
-      http.request(req)
-    end
-
-    case res
-    when Net::HTTPSuccess
-      JSON.parse(res.body)
-    when Net::HTTPUnprocessableEntity
-      raise UnprocessableError, "Bad URI param!"
-    else
-      raise UnknownResponse, "Something was wrong!"
-    end
-  end
 
 end

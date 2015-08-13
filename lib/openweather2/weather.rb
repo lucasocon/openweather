@@ -6,8 +6,8 @@ module Openweather2
 
     def initialize(json)
       @city = json['name']
-      @longitude = json['coord']['lon']
-      @latitude = json['coord']['lat']
+      @longitude = json['coord'] && json['coord']['lon']
+      @latitude = json['coord'] && json['coord']['lat']
       @temperature = Openweather2::Temperature.new(json['main']['temp'])
       @pressure = json['main']['pressure']
       @humidity = json['main']['humidity']
