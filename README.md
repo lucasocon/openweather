@@ -16,6 +16,9 @@ Also you can get some data on the gem response:
   Wind speed
   Wind angle
 
+You can get your APP ID from the OpenWeatherMap website.
+http://openweathermap.org/appid#get
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -41,10 +44,10 @@ require "openweather"
 
 Openweather.configure do |config|
   config.endpoint = 'http://api.openweathermap.org/data/2.5/weather'
-  config.apikey = 'dd7073d18e3085d0300b6678615d904d'
+  config.apikey = YOUR APP ID
 end
 
-Openweather.wheater('london')
+Openweather.weather('london')
 
 ```
 
