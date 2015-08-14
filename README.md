@@ -1,4 +1,4 @@
-# Openweather2
+# Openweather2 [![Gem Version](https://badge.fury.io/rb/openweather2.svg)](http://badge.fury.io/rb/openweather2)
 
 This gem is an abstraction to the OpenWeatherMap API.
 
