@@ -24,11 +24,11 @@ module Openweather2
     yield(configuration)
   end
 
-  def weather(city)
+  def weather(city, units = nil)
     configure_required!
 
     uri = URI(Openweather2.configuration.endpoint)
-    uri.query = URI.encode_www_form(default_params.merge(:q => city))
+    uri.query = URI.encode_www_form(default_params.merge(:q => city, :units => units))
     req = Net::HTTP::Get.new(uri.request_uri)
 
     http_params = [uri.hostname, uri.port, use_ssl: uri.scheme == 'https']
@@ -42,9 +42,9 @@ module Openweather2
       Openweather2::Weather.new(json)
 
     when Net::HTTPUnprocessableEntity
-      raise UnprocessableError, "Bad URI param!"
+      raise UnprocessableError, 'Bad URI param!'
     else
-      raise UnknownResponse, "Something was wrong!"
+      raise UnknownResponse, 'Something was wrong!'
     end
   end
 
@@ -52,12 +52,12 @@ module Openweather2
 
   def configure_required!
     if Openweather2.configuration.instance_variables.size < 2
-      raise ArgumentError, "You must configure Openweather2"
+      raise ArgumentError, 'You must configure Openweather2'
     end
   end
   
   def default_params
-    {:APPID => Openweather2.configuration.apikey }
+    { APPID: Openweather2.configuration.apikey }
   end
 
 end
