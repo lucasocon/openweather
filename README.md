@@ -53,6 +53,16 @@ Openweather2.weather('london')
 
 ```
 
+Also you can provide a second parameter for the units to convert the temperature to 'metric' or 'imperial'
+
+```ruby
+
+Openweather2.weather('london', 'metric')
+Openweather2.weather('london', 'imperial')
+
+```
+
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
