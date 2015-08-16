@@ -36,8 +36,7 @@ module Openweather2
   def parse_json(response)
     case response
     when Net::HTTPSuccess
-      json = JSON.parse(response.body)
-      Openweather2::Weather.new(json)
+      check_response(response)
     when Net::HTTPUnprocessableEntity
       raise UnprocessableError, 'Bad URI param!'
     else
@@ -60,6 +59,15 @@ module Openweather2
   def check_configuration!
     if Openweather2.configuration.instance_variables.size < 2
       raise ArgumentError, 'You must configure Openweather2'
+    end
+  end
+
+  def check_response(response)
+    json = JSON.parse(response.body)
+    if json['cod'] == 200
+      Openweather2::Weather.new(json)
+    else
+      nil
     end
   end
   
