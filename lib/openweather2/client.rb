@@ -24,9 +24,23 @@ module Openweather2
     yield(configuration)
   end
 
-  def weather(city, units = nil)
+  def by_location(city, units = nil)
     check_configuration!
-    uri      = set_request_params(city, units)
+    uri      = set_request_params_by_city(city, units)
+    response = send_request(uri)
+    parse_json(response)
+  end
+
+  def by_zip(zip, unit=nil)
+    check_configuration!
+    uri      = set_request_params_by_zip(zip, unit=nil)
+    response = send_request(uri)
+    parse_json(response)
+  end
+
+  def by_coordinates(latitude, longitude, unit=nil)
+    check_configuration!
+    uri      = set_request_params_by_loc(latitude, longitude, unit=nil)
     response = send_request(uri)
     parse_json(response)
   end
@@ -50,9 +64,21 @@ module Openweather2
     Net::HTTP.start(*http_params) {|http| http.request(req)}
   end
 
-  def set_request_params(city, units)
+  def set_request_params_by_city(city, units)
     uri = URI(Openweather2.configuration.endpoint)
     uri.query = URI.encode_www_form(default_params.merge(q: city, units: units))
+    uri
+  end
+
+  def set_request_params_by_zip(zip, units)
+    uri = URI(Openweather2.configuration.endpoint)
+    uri.query = URI.encode_www_form(default_params.merge(zip: zip, units: units))
+    uri
+  end
+
+  def set_request_params_by_loc(latitude, longitude, units)
+    uri = URI(Openweather2.configuration.endpoint)
+    uri.query = URI.encode_www_form(default_params.merge(lat: latitude, lon: longitude, units: units))
     uri
   end
 
