@@ -41,6 +41,11 @@ Or install it yourself as:
 
 Usage:
 
+You can search the current weather on a location providing a hash with the following parameters:
+* city
+* lat, lon
+* zip
+
 ```ruby
 require "openweather2"
 
@@ -49,31 +54,35 @@ Openweather2.configure do |config|
   config.apikey = YOUR APP ID
 end
 
-Openweather2.weather('london')
+#Search by city
+Openweather2.get_weather(city: 'london')
+
+#Search by coordinates
+Openweather2.get_weather(lat: 35, lon: 139)
+
+#Search by ZIP code
+Openweather2.get_weather(zip: 94040)
 
 ```
 
-Also you can provide a second parameter for the units to convert the temperature to 'metric' or 'imperial'
+Also you can provide a parameter for the units to convert the temperature to 'metric' or 'imperial'
 
 ```ruby
 
-Openweather2.weather('london', 'metric')
-Openweather2.weather('london', 'imperial')
+Openweather2.get_weather(city: 'london', units: 'metric')
+Openweather2.get_weather(city: 'london', units: 'imperial')
 
 ```
 
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
 ## Contributing
 
-Be free to report and send your pull request.
+1. Fork it ( https://github.com/lucasocon/openweather )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/lucasocon/openweather.
+Be free to report and send your pull request.
 
 Contributors:
 * Lucas Ocon (lucasocon)
