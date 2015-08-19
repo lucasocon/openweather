@@ -2,7 +2,7 @@ module Openweather2
   class Weather
 
     attr_reader :city, :longitude, :latitude, :pressure, :humidity, :clouds,
-      :temperature, :min_temperature, :max_temperature, :wind_speed, :wind_angle, :sunrise, :sunset
+      :temperature, :min_temperature, :max_temperature, :wind_speed, :wind_angle
 
     def initialize(json)
       @city = json['name']
